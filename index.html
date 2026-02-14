@@ -20,8 +20,15 @@ body {
 
 h1 {
     color: white;
-    font-size: 28px;
+    font-size: 26px;
     margin-bottom: 40px;
+    padding: 0 20px;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    position: relative;
 }
 
 button {
@@ -30,19 +37,20 @@ button {
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    position: absolute;
+    transition: 0.3s ease;
 }
 
 #yesBtn {
     background: white;
     color: #ff2e63;
-    left: 40%;
 }
 
 #noBtn {
     background: #ff2e63;
     color: white;
-    left: 55%;
+    position: absolute;
+}
+</style>
 }
 
 #dateQuestion {
