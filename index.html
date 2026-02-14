@@ -23,11 +23,13 @@ h1 {
     font-size: 26px;
     margin-bottom: 30px;
     padding: 0 20px;
+    z-index: 2;
 }
 
 .buttons {
     display: flex;
     gap: 20px;
+    z-index: 2;
 }
 
 button {
@@ -49,11 +51,43 @@ button {
     color: white;
 }
 
-#dateMessage {
+#finalMessage {
     display: none;
     font-size: 22px;
     color: white;
-    margin-top: 30px;
+    margin-top: 20px;
+    z-index: 2;
+}
+
+#whatsappBtn {
+    display: none;
+    margin-top: 20px;
+    background: #25D366;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 18px;
+    z-index: 2;
+}
+
+/* Floating Hearts */
+.heart {
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    animation: floatUp 4s linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-800px);
+        opacity: 0;
+    }
 }
 </style>
 </head>
@@ -67,13 +101,20 @@ button {
     <button id="noBtn">No 😢</button>
 </div>
 
-<h1 id="dateMessage">So... we are going on a date right? 😍✨</h1>
+<h1 id="finalMessage">Yayyy 😍 I knew it! 💖</h1>
+
+<a id="whatsappBtn" 
+href="https://wa.me/917416916068?text=Yes%20I%20will%20come%20on%20a%20date%20❤️"
+>
+Click Here ❤️
+</a>
 
 <script>
 let yesBtn = document.getElementById("yesBtn");
 let noBtn = document.getElementById("noBtn");
 let question = document.getElementById("question");
-let dateMessage = document.getElementById("dateMessage");
+let finalMessage = document.getElementById("finalMessage");
+let whatsappBtn = document.getElementById("whatsappBtn");
 let container = document.getElementById("buttonContainer");
 
 let size = 18;
@@ -93,8 +134,28 @@ noBtn.addEventListener("touchstart", moveButton);
 yesBtn.addEventListener("click", function() {
     question.style.display = "none";
     container.style.display = "none";
-    dateMessage.style.display = "block";
+
+    finalMessage.style.display = "block";
+    whatsappBtn.style.display = "inline-block";
+
+    startHearts();
 });
+
+function startHearts() {
+    setInterval(() => {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "0";
+        heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 4000);
+    }, 300);
+}
 </script>
 
 </body>
