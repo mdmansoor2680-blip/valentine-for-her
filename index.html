@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Love ❤️</title>
+<title>For Sandhya ❤️</title>
 
 <style>
 body {
@@ -13,14 +13,14 @@ body {
     align-items: center;
     flex-direction: column;
     background: linear-gradient(135deg, #ff4e88, #ff99ac);
-    font-family: Arial;
-    overflow: hidden;
+    font-family: Arial, sans-serif;
     text-align: center;
+    overflow: hidden;
 }
 
 h1 {
     color: white;
-    font-size: 26px;
+    font-size: 24px;
     margin-bottom: 40px;
     padding: 0 20px;
 }
@@ -50,46 +50,38 @@ button {
     color: white;
     position: absolute;
 }
+
+#dateMessage {
+    display: none;
+    font-size: 22px;
+    color: white;
+    margin-top: 30px;
+}
 </style>
 </head>
 
 <body>
 
-<h1 id="question">Will you be my Valentine? 💖</h1>
+<h1 id="question">Will you be my Valentine, Sandhya? ❤️</h1>
 
-<button id="yesBtn">Yes ❤️</button>
-<button id="noBtn">No 😢</button>
+<div class="buttons">
+    <button id="yesBtn">Yes ❤️</button>
+    <button id="noBtn">No 😢</button>
+</div>
 
-<h1 id="dateQuestion">So... we are going on a date right? 😍✨</h1>
+<h1 id="dateMessage">So... we are going on a date right? 😍✨</h1>
 
 <script>
 let yesBtn = document.getElementById("yesBtn");
 let noBtn = document.getElementById("noBtn");
 let question = document.getElementById("question");
-let dateQuestion = document.getElementById("dateQuestion");
+let dateMessage = document.getElementById("dateMessage");
 
 let size = 18;
 
-noBtn.addEventListener("touchstart", moveButton);
-noBtn.addEventListener("mouseover", moveButton);
-
 function moveButton() {
-    let x = Math.random() * window.innerWidth;
-    let y = Math.random() * window.innerHeight;
+    let x = Math.random() * (window.innerWidth - 100);
+    let y = Math.random() * (window.innerHeight - 100);
+    noBtn.style.position = "absolute";
     noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-
-    size += 5;
-    yesBtn.style.fontSize = size + "px";
-}
-
-yesBtn.addEventListener("click", function() {
-    question.style.display = "none";
-    yesBtn.style.display = "none";
-    noBtn.style.display = "none";
-    dateQuestion.style.display = "block";
-});
-</script>
-
-</body>
-</html>
+    noBtn.style.top =
