@@ -20,15 +20,14 @@ body {
 
 h1 {
     color: white;
-    font-size: 24px;
-    margin-bottom: 40px;
+    font-size: 26px;
+    margin-bottom: 30px;
     padding: 0 20px;
 }
 
 .buttons {
     display: flex;
     gap: 20px;
-    position: relative;
 }
 
 button {
@@ -48,7 +47,6 @@ button {
 #noBtn {
     background: #ff2e63;
     color: white;
-    position: absolute;
 }
 
 #dateMessage {
@@ -64,7 +62,7 @@ button {
 
 <h1 id="question">Will you be my Valentine, Sandhya? ❤️</h1>
 
-<div class="buttons">
+<div class="buttons" id="buttonContainer">
     <button id="yesBtn">Yes ❤️</button>
     <button id="noBtn">No 😢</button>
 </div>
@@ -76,12 +74,28 @@ let yesBtn = document.getElementById("yesBtn");
 let noBtn = document.getElementById("noBtn");
 let question = document.getElementById("question");
 let dateMessage = document.getElementById("dateMessage");
+let container = document.getElementById("buttonContainer");
 
 let size = 18;
 
 function moveButton() {
-    let x = Math.random() * (window.innerWidth - 100);
-    let y = Math.random() * (window.innerHeight - 100);
     noBtn.style.position = "absolute";
-    noBtn.style.left = x + "px";
-    noBtn.style.top =
+    noBtn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+    noBtn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+
+    size += 5;
+    yesBtn.style.fontSize = size + "px";
+}
+
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("touchstart", moveButton);
+
+yesBtn.addEventListener("click", function() {
+    question.style.display = "none";
+    container.style.display = "none";
+    dateMessage.style.display = "block";
+});
+</script>
+
+</body>
+</html>
